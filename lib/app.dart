@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_grade/screens/main_screen/src/main_screen.dart';
+import 'package:news_app_grade/screens/root_screen/feature.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
         // TODO add theme here
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const RootScreenFeature(),
     );
   }
 }

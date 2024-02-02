@@ -9,9 +9,9 @@ class RootScreenFeature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<RootScreenViewModel>(
       create: (context) => RootScreenViewModel(),
-      child: const RootScreen(),
+      builder: (context, child) => const RootScreen(),
     );
   }
 }
