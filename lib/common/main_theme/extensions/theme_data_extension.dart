@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_grade/common/main_theme/color_palette.dart';
+import '../color_palette.dart';
 
 extension ThemeDataExtension on ThemeData {
   bool get isDark => brightness == Brightness.dark;

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:news_app_grade/screens/source_screen/src/source_screen.dart';
+import 'src/source_screen.dart';
 
 CupertinoPageRoute sourceScreenRoute(RouteSettings route) {
   return CupertinoPageRoute(

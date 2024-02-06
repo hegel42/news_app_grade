@@ -1,3 +1,5 @@
+import '../../models/article_response.dart';
+
 abstract class IHomoRepo {
-  Future getHotArticles();
+  Future<ArticlesResponse> getHotArticles();
 }

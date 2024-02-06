@@ -4,21 +4,21 @@ import 'package:flutter/services.dart';
 ThemeData mainAppLightTheme = ThemeData(
   brightness: Brightness.light,
   fontFamily: 'Montserrat',
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark),
+        statusBarIconBrightness: Brightness.dark,),
   ),
 );
 
 ThemeData mainAppDarkTheme = ThemeData(
   brightness: Brightness.dark,
   fontFamily: 'Montserrat',
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light),
+        statusBarIconBrightness: Brightness.light,),
   ),
 );
