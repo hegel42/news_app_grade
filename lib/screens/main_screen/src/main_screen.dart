@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../common/extensions/context_extension.dart';
+import '../../../common/localization/provider/locale_provider.dart';
 import 'bloc/home_screen_bloc.dart';
 
 class MainScreen extends StatefulWidget {
@@ -22,18 +24,37 @@ class _MainScreenState extends State<MainScreen> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: const Text('title'),
+            title: Text(context.locale.helloWorld),
           ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
+                if (state is HomeScreenInitial) Text('initial state'),
+                Text(
+                  context.locale.centerText,
                 ),
                 Text(
                   '$_counter',
                   style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // context.read<LocaleManager>().updateLocale(context);
+                    context.read<LocaleProvider>().setLocale(
+                          Locale('en'),
+                        );
+                  },
+                  child: Text('en'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // context.read<LocaleManager>().updateLocale(context);
+                    context.read<LocaleProvider>().setLocale(
+                          Locale('ru'),
+                        );
+                  },
+                  child: Text('ru'),
                 ),
               ],
             ),

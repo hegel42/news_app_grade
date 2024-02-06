@@ -25,3 +25,7 @@ class NavigateToOtherScreenEvent extends MainBlocEvent {
   final String? onSecondNavigate;
   final bool withClearStack;
 }
+
+class ChangeAppLocale extends MainBlocEvent {}
+
+class GetAppLocale extends MainBlocEvent {}

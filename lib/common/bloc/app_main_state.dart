@@ -5,6 +5,8 @@ sealed class MainBlocState {}
 
 class AppMainInitial extends MainBlocState {}
 
+class AppMainHomeScreen extends MainBlocState {}
+
 class SplashState extends MainBlocState {}
 
 class NotifyListeners extends MainBlocState {
