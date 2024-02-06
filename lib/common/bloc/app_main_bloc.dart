@@ -15,7 +15,7 @@ class AppMainBloc extends Bloc<MainBlocEvent, MainBlocState> {
   Future _appStarted(AppStartedEvent event, Emitter<MainBlocState> emit) async {
     emit(SplashState());
     await repository.init();
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 2));
     // try {
     //   final docDirectory = await getApplicationDocumentsDirectory();
     //   final checkedDirectory = Directory('${docDirectory.path}${UploadFileDirectory.defaultPath}');
