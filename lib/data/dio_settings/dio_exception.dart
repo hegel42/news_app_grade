@@ -1,18 +1,17 @@
 import 'package:dio/dio.dart';
 
 class DioExceptions implements Exception {
-  late String message;
 
   DioExceptions.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.cancel:
-        message = "Request to API server was cancelled";
+        message = 'Request to API server was cancelled';
         break;
       case DioExceptionType.connectionTimeout:
-        message = "Connection timeout with API server";
+        message = 'Connection timeout with API server';
         break;
       case DioExceptionType.receiveTimeout:
-        message = "Receive timeout in connection with API server";
+        message = 'Receive timeout in connection with API server';
         break;
       case DioExceptionType.badResponse:
         message = _handleError(
@@ -23,6 +22,7 @@ class DioExceptions implements Exception {
       default:
     }
   }
+  late String message;
 }
 
 String _handleError(int? statusCode, dynamic error) {

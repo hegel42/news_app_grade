@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:news_app_grade/data/dio_settings/dio_client.dart';
-import 'package:news_app_grade/data/repository/repos/home_repo.dart';
-import 'package:news_app_grade/data/repository/repos/i_home_repo.dart';
+import '../dio_settings/dio_client.dart';
+import 'repos/home_repo.dart';
+import 'repos/i_home_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Repository {
@@ -9,10 +9,10 @@ class Repository {
   DioClient? dioClient;
 
   Future init() async {
-    final _prefs = await SharedPreferences.getInstance();
-    final _dio = _getDio(_prefs);
+    final prefs = await SharedPreferences.getInstance();
+    final dio = _getDio(prefs);
 
-    homeRepo = HomeRepo(dio: _dio);
+    homeRepo = HomeRepo(dio: dio);
   }
 
   Dio _getDio(SharedPreferences preferences) {

@@ -1,15 +1,7 @@
-import 'package:news_app_grade/data/models/source.dart';
+import 'source.dart';
 
 // generated with Dart Data class generator
 class Article {
-  final Source? source;
-  final String? author;
-  final String? title;
-  final String? description;
-  final String? url;
-  final String? urlToImage;
-  final String? publishedAt;
-  final String? content;
 
   Article({
     this.source,
@@ -33,4 +25,12 @@ class Article {
         urlToImage = json['urlToImage'] as String?,
         publishedAt = json['publishedAt'] as String?,
         content = json['content'];
+  final Source? source;
+  final String? author;
+  final String? title;
+  final String? description;
+  final String? url;
+  final String? urlToImage;
+  final String? publishedAt;
+  final String? content;
 }

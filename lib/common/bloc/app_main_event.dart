@@ -6,21 +6,22 @@ sealed class MainBlocEvent {}
 class AppStartedEvent extends MainBlocEvent {}
 
 class NotifyListenersEvent extends MainBlocEvent {
-  final isAuthorized;
+  NotifyListenersEvent({
+    this.needNavigateToProfile = false,
+    required this.isAuthorized,
+  });
+  final bool isAuthorized;
   final bool needNavigateToProfile;
-
-  NotifyListenersEvent(this.isAuthorized, {this.needNavigateToProfile = false});
 }
 
 class ClearCurrentStackEvent extends MainBlocEvent {
-  final int? stackIndex;
   ClearCurrentStackEvent({this.stackIndex});
+  final int? stackIndex;
 }
 
 class NavigateToOtherScreenEvent extends MainBlocEvent {
+  NavigateToOtherScreenEvent({this.stackIndex, this.onSecondNavigate, this.withClearStack = false});
   final int? stackIndex;
   final String? onSecondNavigate;
   final bool withClearStack;
-
-  NavigateToOtherScreenEvent({this.stackIndex, this.onSecondNavigate, this.withClearStack = false});
 }

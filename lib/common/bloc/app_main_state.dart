@@ -8,21 +8,22 @@ class AppMainInitial extends MainBlocState {}
 class SplashState extends MainBlocState {}
 
 class NotifyListeners extends MainBlocState {
+  NotifyListeners({required this.isAuthorized});
   final bool isAuthorized;
-
-  NotifyListeners(this.isAuthorized);
 }
 
 class ClearCurrentStackState extends MainBlocState {
-  final int? stackIndex;
-
   ClearCurrentStackState({this.stackIndex});
+  final int? stackIndex;
 }
 
 class NavigateToOtherScreenState extends MainBlocState {
+  NavigateToOtherScreenState({
+    this.stackIndex,
+    this.onSecondNavigate,
+    required this.withClearStack,
+  });
   final int? stackIndex;
   final String? onSecondNavigate;
   final bool withClearStack;
-
-  NavigateToOtherScreenState({this.stackIndex, this.onSecondNavigate, required this.withClearStack});
 }

@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:news_app_grade/data/dio_settings/dio_exception.dart';
-import 'package:news_app_grade/data/models/article_response.dart';
-import 'package:news_app_grade/data/repository/repos/i_home_repo.dart';
+import '../../dio_settings/dio_exception.dart';
+import '../../models/article_response.dart';
+import 'i_home_repo.dart';
 
 class HomeRepo extends IHomoRepo {
-  final Dio dio;
 
   HomeRepo({required this.dio});
+  final Dio dio;
 
   @override
   Future<ArticlesResponse> getHotArticles() async {

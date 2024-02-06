@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:news_app_grade/common/constants/network_constants.dart';
+import '../../common/constants/network_constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {

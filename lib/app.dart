@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app_grade/common/bloc/app_main_bloc.dart';
-import 'package:news_app_grade/common/main_theme/main_theme_data.dart';
-import 'package:news_app_grade/screens/root_screen/feature.dart';
+import 'common/bloc/app_main_bloc.dart';
+import 'common/main_theme/main_theme_data.dart';
+import 'screens/root_screen/feature.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -28,9 +28,9 @@ class _MainAppState extends State<MainApp> {
         builder: (context, state) {
           if (state is SplashState) {
             // TODO placeholder
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
-          return RootScreenFeature();
+          return const RootScreenFeature();
         },
       ),
     );
