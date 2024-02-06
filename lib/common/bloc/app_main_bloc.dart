@@ -30,7 +30,7 @@ class AppMainBloc extends Bloc<MainBlocEvent, MainBlocState> {
     //   Logger.d(this, 'APP_STARTED_DIRECTORY_ERROR:$e');
     // }
 
-    emit(AppMainInitial());
+    emit(AppMainHomeScreen());
   }
 
   //   void changeStartLang() async {

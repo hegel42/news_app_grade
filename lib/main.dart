@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'app.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'common/bloc/app_main_bloc.dart';
-import 'common/localization/locale_manager.dart';
 import 'common/localization/provider/locale_provider.dart';
 import 'data/repository/repository.dart';
 import 'screens/main_screen/src/bloc/home_screen_bloc.dart';
@@ -16,35 +15,34 @@ void main() {
     DeviceOrientation.portraitUp,
   ]);
   runApp(
-    MultiRepositoryProvider(
+    MultiProvider(
       providers: [
-        RepositoryProvider(create: (context) => Repository()),
-        // TODO add locale
+        ChangeNotifierProvider(create: (_) => LocaleProvider()),
       ],
-      child: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (_) => LocaleProvider(),
-          ),
-        ],
-        // create: (context) => SubjectRepository(),
-        child: MultiBlocProvider(
+      builder: (context, child) {
+        return MultiRepositoryProvider(
           providers: [
-            BlocProvider<AppMainBloc>(
-              lazy: false,
-              create: (context) => AppMainBloc(
-                repository: context.read<Repository>(),
-              )..add(AppStartedEvent()),
-            ),
-            BlocProvider<HomeScreenBloc>(
-              create: (context) => HomeScreenBloc(
-                context.read<Repository>(),
-              )..add(FetchHotNews()),
-            ),
+            RepositoryProvider(create: (context) => Repository()),
+            // TODO add locale
           ],
-          child: const MainApp(),
-        ),
-      ),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider<AppMainBloc>(
+                lazy: false,
+                create: (context) => AppMainBloc(
+                  repository: context.read<Repository>(),
+                )..add(AppStartedEvent()),
+              ),
+              BlocProvider<HomeScreenBloc>(
+                create: (context) => HomeScreenBloc(
+                  context.read<Repository>(),
+                )..add(FetchHotNews()),
+              ),
+            ],
+            child: const MainApp(),
+          ),
+        );
+      },
     ),
   );
 }

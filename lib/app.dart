@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'common/bloc/app_main_bloc.dart';
 import 'common/localization/provider/locale_provider.dart';
 import 'common/main_theme/main_theme_data.dart';
@@ -29,7 +30,7 @@ class _MainAppState extends State<MainApp> {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      locale: context.read<LocaleProvider>().locale,
+      locale: Provider.of<LocaleProvider>(context).locale,
       // navigatorKey: context.read<Repository>().alice.getNavigatorKey(),
       // localizationsDelegates: AppLocalizations.localizationsDelegates,
       // supportedLocales: [Locale('ru', "RU")],
@@ -42,7 +43,10 @@ class _MainAppState extends State<MainApp> {
             // TODO placeholder
             return const CircularProgressIndicator();
           }
-          return const RootScreenFeature();
+          if (state is AppMainHomeScreen) {
+            return const RootScreenFeature();
+          }
+          return const CircularProgressIndicator();
         },
       ),
     );

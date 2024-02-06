@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/extensions/context_extension.dart';
-import '../../../common/localization/locale_manager.dart';
 import '../../../common/localization/provider/locale_provider.dart';
 import 'bloc/home_screen_bloc.dart';
 
