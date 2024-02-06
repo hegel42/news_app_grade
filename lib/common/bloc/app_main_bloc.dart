@@ -9,6 +9,7 @@ part 'app_main_state.dart';
 class AppMainBloc extends Bloc<MainBlocEvent, MainBlocState> {
   AppMainBloc({required this.repository}) : super(AppMainInitial()) {
     on<AppStartedEvent>(_appStarted);
+    on<ChangeAppLocale>((event, emit) {});
   }
   final Repository repository;
 
@@ -31,4 +32,19 @@ class AppMainBloc extends Bloc<MainBlocEvent, MainBlocState> {
 
     emit(AppMainInitial());
   }
+
+  //   void changeStartLang() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   String? langCode = prefs.getString('lang');
+  //   print(langCode);
+  //   if (langCode != null) {
+  //     emit(Locale(langCode, ''));
+  //   }
+  // }
+
+  // void changeLang(context, String data) async {
+  //   emit(Locale(data, ''));
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.setString('lang', data);
+  // }
 }
