@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                if (state is HomeScreenInitial) Text('initial state'),
+                if (state is HomeScreenInitial) const Text('initial state'),
                 Text(
                   context.locale.centerText,
                 ),
@@ -42,19 +42,19 @@ class _MainScreenState extends State<MainScreen> {
                   onPressed: () {
                     // context.read<LocaleManager>().updateLocale(context);
                     context.read<LocaleProvider>().setLocale(
-                          Locale('en'),
+                          const Locale('en'),
                         );
                   },
-                  child: Text('en'),
+                  child: const Text('en'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     // context.read<LocaleManager>().updateLocale(context);
                     context.read<LocaleProvider>().setLocale(
-                          Locale('ru'),
+                          const Locale('ru'),
                         );
                   },
-                  child: Text('ru'),
+                  child: const Text('ru'),
                 ),
               ],
             ),
