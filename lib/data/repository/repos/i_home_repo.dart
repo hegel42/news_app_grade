@@ -1,5 +1,10 @@
 import '../../models/article_response.dart';
+import '../../models/source_response.dart';
 
 abstract class IHomoRepo {
-  Future<ArticlesResponse> getHotArticles();
+  Future<ArticlesResponse> getTopHeadlines();
+
+  Future<SourceResponse> getSources();
+
+  Future<ArticlesResponse> getLatestNews();
 }
