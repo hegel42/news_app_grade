@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import '../../../common/utils/formatter_utils.dart';
 import '../../dio_settings/dio_exception.dart';
 import '../../models/article_response.dart';
 import '../../models/source_response.dart';
@@ -23,15 +24,14 @@ class HomeRepo extends IHomoRepo {
   @override
   Future<ArticlesResponse> getLatestNews() async {
     // TODO add request model
-    final now = DateTime.now();
-    final threeDaysAgo = now.subtract(const Duration(days: 3));
-    final toDate =
-        "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
-    final fromDate =
-        "${threeDaysAgo.year}-${threeDaysAgo.month.toString().padLeft(2, '0')}-${threeDaysAgo.day.toString().padLeft(2, '0')}";
+    final fromDate = Formatter.requestDateFormatter(DateTime.now().toString());
+    final toDate = Formatter.requestDateFormatter(
+      DateTime.now().subtract(const Duration(days: 3)).toString(),
+    );
+
     try {
       final response = await dio.get(
-        'everything?q=from=$fromDate&to=$toDate&sortBy=popularity&pageSize=20',
+        'everything?q=from=$fromDate&to=$toDate&pageSize=20',
         // queryParameters:
       );
 
@@ -49,6 +49,20 @@ class HomeRepo extends IHomoRepo {
           .get('top-headlines/sources', queryParameters: {'country': 'us'});
 
       return SourceResponse.fromJson(response.toString());
+    } on DioException catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      throw errorMessage;
+    }
+  }
+
+  @override
+  Future<ArticlesResponse> getArticleBySource({
+    required String sourceId,
+  }) async {
+    try {
+      final response = await dio.get('top-headlines?sources=$sourceId');
+
+      return ArticlesResponse.fromJson(response.toString());
     } on DioException catch (e) {
       final errorMessage = DioExceptions.fromDioError(e).toString();
       throw errorMessage;

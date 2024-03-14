@@ -7,4 +7,6 @@ abstract class IHomoRepo {
   Future<SourceResponse> getSources();
 
   Future<ArticlesResponse> getLatestNews();
+
+  Future<ArticlesResponse> getArticleBySource({required String sourceId});
 }

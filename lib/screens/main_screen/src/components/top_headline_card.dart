@@ -5,6 +5,7 @@ import '../../../../common/extensions/context_extension.dart';
 import '../../../../common/main_theme/color_palette.dart';
 import '../../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../../common/main_theme/extensions/theme_data_extension.dart';
+import '../../../../common/utils/formatter_utils.dart';
 import '../../../../common/widgets/app_gesture_detector.dart';
 import '../../../../data/models/article.dart';
 import '../../../article_detailed_screen/feature.dart';
@@ -30,7 +31,7 @@ class TopHeadlinesCard extends StatelessWidget {
           final news = articlesList[index];
 
           return AppGestureDetector(
-            alternativeDecoration: BoxDecoration(),
+            alternativeDecoration: const BoxDecoration(),
             onTap: () {
               context.rootNavigator.push(articleDetailedScreenRoute(news));
             },
@@ -95,16 +96,16 @@ class TopHeadlinesCard extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                child: Text(
+                              Text(
+                                Formatter.stringDateFormatter(
                                   news.publishedAt ?? '',
-                                  softWrap: false,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.clip,
-                                  style: context.theme.textTheme.ui14Regular(
-                                    context,
-                                    ColorPalette.mainWhite,
-                                  ),
+                                ),
+                                softWrap: false,
+                                maxLines: 1,
+                                overflow: TextOverflow.clip,
+                                style: context.theme.textTheme.ui14Regular(
+                                  context,
+                                  ColorPalette.mainWhite,
                                 ),
                               ),
                             ],

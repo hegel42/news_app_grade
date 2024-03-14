@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
+import '../../../common/widgets/main_app_bar.dart';
 import 'bloc/home_screen_bloc.dart';
 import 'components/recenent_news_card.dart';
 import 'components/top_agencies.dart';
@@ -27,9 +26,9 @@ class _MainScreenState extends State<MainScreen> {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              title: Text(context.locale.helloWorld),
+            appBar: const MainAppBar(
+              title: 'Hot news',
+              needBackButton: false,
             ),
             body: BlocConsumer<HomeScreenBloc, HomeScreenState>(
               listener: (context, state) {
@@ -64,7 +63,8 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         SliverToBoxAdapter(
                           child: TopHeadlinesCard(
-                              articlesList: state.topHeadlines),
+                            articlesList: state.topHeadlines,
+                          ),
                         ),
                         SliverPadding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -75,7 +75,9 @@ class _MainScreenState extends State<MainScreen> {
                                 Text(
                                   'Popular news agencies',
                                   style: context.theme.textTheme.ui18Semibold(
-                                      context, context.theme.text),
+                                    context,
+                                    context.theme.text,
+                                  ),
                                 ),
                                 const SizedBox(height: 8),
                                 TopAgencies(
@@ -83,9 +85,11 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
-                                  'Popular news agencies',
+                                  'Recent news',
                                   style: context.theme.textTheme.ui18Semibold(
-                                      context, context.theme.text),
+                                    context,
+                                    context.theme.text,
+                                  ),
                                 ),
                                 const SizedBox(height: 8),
                               ],
@@ -95,7 +99,6 @@ class _MainScreenState extends State<MainScreen> {
                         SliverPadding(
                           padding: const EdgeInsets.all(8),
                           sliver: RecentNewsGrid(
-                            // TODO add if empty
                             hotnewsList: state.recentArticles ?? [],
                           ),
                         ),
