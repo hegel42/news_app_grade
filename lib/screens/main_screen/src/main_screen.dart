@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../../common/widgets/main_app_bar.dart';
+import '../../../common/widgets/shimmer_placeholder.dart';
 import 'bloc/home_screen_bloc.dart';
 import 'components/recenent_news_card.dart';
 import 'components/top_agencies.dart';
@@ -50,14 +53,30 @@ class _MainScreenState extends State<MainScreen> {
               child: CustomScrollView(
                 slivers: [
                   if (state is HomeScreenLoading) ...[
-                    const SliverToBoxAdapter(child: Text('add shimer')),
+                    SliverList.list(
+                      children: [
+                        const SizedBox(height: 16),
+                        TopHeadlinesCards.placeholder(),
+                        const SizedBox(height: 24),
+                        const _TextPlaceholder(),
+                        const SizedBox(height: 16),
+                        TopAgencies.placeholder(),
+                        const SizedBox(height: 16),
+                        const _TextPlaceholder(),
+                        const SizedBox(height: 16),
+                      ],
+                    ),
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      sliver: RecentNewsGrid.placeholder(),
+                    ),
                   ],
                   if (state is HomeScreenDataState) ...[
                     const SliverToBoxAdapter(
                       child: SizedBox(height: 16),
                     ),
                     SliverToBoxAdapter(
-                      child: TopHeadlinesCard(
+                      child: TopHeadlinesCards(
                         articlesList: state.topHeadlines,
                       ),
                     ),
@@ -138,5 +157,28 @@ class _MainScreenState extends State<MainScreen> {
     //     ],
     //   ),
     // ),
+  }
+}
+
+class _TextPlaceholder extends StatelessWidget {
+  const _TextPlaceholder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: ShimmerPlaceholder(
+          isEnabled: true,
+          child: SizedBox(
+            width: 140,
+            height: 25,
+          ),
+        ),
+      ),
+    );
   }
 }

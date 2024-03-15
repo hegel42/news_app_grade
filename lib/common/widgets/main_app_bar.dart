@@ -30,7 +30,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: color ?? context.theme.accent,
       elevation: 1,
-      shadowColor: context.theme.cardShadow,
+      shadowColor: context.theme.accentSecondary,
       scrolledUnderElevation: 0,
       automaticallyImplyLeading: false,
       leading: needBackButton
@@ -39,7 +39,10 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () {
                   context.navigator.pop();
                 },
-                icon: const Icon(Icons.chevron_left),
+                icon: Icon(
+                  Icons.chevron_left,
+                  color: context.theme.border,
+                ),
               ),
             )
           : const SizedBox.shrink(),
@@ -60,5 +63,5 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height ?? 40);
+  Size get preferredSize => Size.fromHeight(height ?? 50);
 }

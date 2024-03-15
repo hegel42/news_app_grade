@@ -4,13 +4,17 @@ import 'dart:convert';
 class Source {
   Source({
     required this.id,
-    required this.name,
-    required this.description,
-    required this.url,
-    required this.category,
-    required this.country,
-    required this.language,
+    this.name,
+    this.description,
+    this.url,
+    this.category,
+    this.country,
+    this.language,
   });
+
+  factory Source.mock() {
+    return Source(id: 'mock');
+  }
 
   final dynamic id;
   final String? name;

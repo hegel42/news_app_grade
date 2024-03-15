@@ -8,9 +8,13 @@ class Formatter {
   // static DateFormat ddMMyy = DateFormat('dd.MM.yy', 'ru');
 
   static String stringDateFormatter(String date) {
-    final dateTime = DateTime.parse(date);
-    final formattedDate = DateFormat('dd.MM.yyyy').format(dateTime);
-    return formattedDate;
+    final dateTime = DateTime.tryParse(date);
+    if (dateTime != null) {
+      final formattedDate = DateFormat('dd.MM.yyyy').format(dateTime);
+      return formattedDate;
+    } else {
+      return '';
+    }
   }
 
   static String requestDateFormatter(String date) {

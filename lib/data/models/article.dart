@@ -16,17 +16,10 @@ class Article {
     this.content,
   });
 
-  // Article.fromJson(Map<String, dynamic> json)
-  //     : source = (json['source'] as Map<String, dynamic>?) != null
-  //           ? Source.fromJson(json['source'] as Map<String, dynamic>)
-  //           : null,
-  //       author = json['author'] as String?,
-  //       title = json['title'] as String?,
-  //       description = json['description'] as String?,
-  //       url = json['url'] as String?,
-  //       urlToImage = json['urlToImage'] as String?,
-  //       publishedAt = json['publishedAt'] as String?,
-  //       content = json['content'];
+  factory Article.mock() {
+    return Article();
+  }
+
   final Source? source;
   final String? author;
   final String? title;

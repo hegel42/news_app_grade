@@ -122,7 +122,6 @@ class _AgencyHotCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppGestureDetector(
       onTap: () {
-        context.rootNavigator.push(articleDetailedScreenRoute(item));
         context.navigator.push(articleDetailedScreenRoute(item));
       },
       alternativeDecoration: BoxDecoration(
