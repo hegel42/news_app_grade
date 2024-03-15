@@ -42,7 +42,7 @@ class RecentNewsGrid extends StatelessWidget {
             ],
           ),
           onTap: () {
-            context.rootNavigator.push(articleDetailedScreenRoute(news));
+            context.navigator.push(articleDetailedScreenRoute(news));
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

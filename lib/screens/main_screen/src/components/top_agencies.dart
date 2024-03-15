@@ -31,7 +31,7 @@ class TopAgencies extends StatelessWidget {
             child: AppGestureDetector(
               alternativeDecoration: const BoxDecoration(),
               onTap: () {
-                context.rootNavigator.push(agencyDetailedScreenRoute(agency));
+                context.navigator.push(agencyDetailedScreenRoute(agency));
               },
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.28,

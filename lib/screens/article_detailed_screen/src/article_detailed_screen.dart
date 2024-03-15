@@ -45,7 +45,7 @@ class ArticleDetailedScreen extends StatelessWidget {
               sliver: SliverList.list(
                 children: [
                   Text(
-                    article.description ?? '',
+                    article.title ?? '',
                     style: context.theme.textTheme
                         .ui24Medium(context, context.theme.text),
                   ),
@@ -63,7 +63,8 @@ class ArticleDetailedScreen extends StatelessWidget {
                       Text(
                         // article.publishedAt ?? '',
                         Formatter.stringDateFormatter(
-                            article.publishedAt ?? ''),
+                          article.publishedAt ?? '',
+                        ),
                         style: context.theme.textTheme
                             .ui16Medium(context, context.theme.text),
                       ),
@@ -76,7 +77,10 @@ class ArticleDetailedScreen extends StatelessWidget {
                         .ui16Regular(context, context.theme.text),
                   ),
                   Text(
-                    Formatter.longTextFormatter(article.content ?? ''),
+                    Formatter.longTextFormatter(
+                      // TODO add placeholder
+                      article.content ?? 'Read more on website ->',
+                    ),
                     style: context.theme.textTheme
                         .ui16Regular(context, context.theme.text),
                   ),

@@ -33,7 +33,7 @@ class TopHeadlinesCard extends StatelessWidget {
           return AppGestureDetector(
             alternativeDecoration: const BoxDecoration(),
             onTap: () {
-              context.rootNavigator.push(articleDetailedScreenRoute(news));
+              context.navigator.push(articleDetailedScreenRoute(news));
             },
             child: Card(
               clipBehavior: Clip.antiAlias,

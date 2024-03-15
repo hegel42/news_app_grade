@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'common/bloc/app_main_bloc.dart';
 import 'common/localization/provider/locale_provider.dart';
 import 'common/main_theme/main_theme_data.dart';
-import 'data/repository/repository.dart';
 import 'screens/root_screen/feature.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
