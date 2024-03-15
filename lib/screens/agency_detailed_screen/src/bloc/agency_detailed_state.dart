@@ -9,6 +9,7 @@ final class AgencyDetailedLoading extends AgencyDetailedState {}
 
 final class AgencyDetailedData extends AgencyDetailedState {
   AgencyDetailedData({required this.listArticles});
+
   final List<Article> listArticles;
 }
 

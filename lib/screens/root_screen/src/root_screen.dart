@@ -52,7 +52,7 @@ class MainAppBottomBar extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: context.theme.bg,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color(0xFFB6BBC6),
             blurRadius: 16,
@@ -66,7 +66,6 @@ class MainAppBottomBar extends StatelessWidget {
           children: [
             Expanded(
               child: _NavBarItem(
-                // title: context.locale?.calendar ?? '',
                 title: 'Main',
                 index: 0,
               ),

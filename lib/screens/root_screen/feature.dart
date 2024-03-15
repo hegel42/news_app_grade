@@ -11,7 +11,7 @@ class RootScreenFeature extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RootScreenViewModel>(
       create: (context) => RootScreenViewModel(),
-      builder: (context, child) => const RootScreen(),
+      child: const RootScreen(),
     );
   }
 }

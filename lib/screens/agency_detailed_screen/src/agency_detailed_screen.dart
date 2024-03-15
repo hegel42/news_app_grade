@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
-import '../../../common/utils/formatter_utlis.dart';
+import '../../../common/utils/formatter_utils.dart';
 import '../../../common/widgets/app_gesture_detector.dart';
 import '../../../common/widgets/main_app_bar.dart';
 import '../../../data/models/article.dart';
@@ -121,6 +123,7 @@ class _AgencyHotCard extends StatelessWidget {
     return AppGestureDetector(
       onTap: () {
         context.rootNavigator.push(articleDetailedScreenRoute(item));
+        context.navigator.push(articleDetailedScreenRoute(item));
       },
       alternativeDecoration: BoxDecoration(
         borderRadius: const BorderRadius.all(

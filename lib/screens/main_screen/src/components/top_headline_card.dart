@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import '../../../../common/extensions/context_extension.dart';
 import '../../../../common/main_theme/color_palette.dart';
 import '../../../../common/main_theme/extensions/text_theme_extension.dart';
+import '../../../../common/main_theme/extensions/theme_data_extension.dart';
+import '../../../../common/utils/formatter_utils.dart';
 import '../../../../common/widgets/app_gesture_detector.dart';
 import '../../../../data/models/article.dart';
-import '../../../agency_detailed_screen/feature.dart';
+import '../../../article_detailed_screen/feature.dart';
 
 class TopHeadlinesCard extends StatelessWidget {
   const TopHeadlinesCard({
@@ -31,8 +33,7 @@ class TopHeadlinesCard extends StatelessWidget {
           return AppGestureDetector(
             alternativeDecoration: const BoxDecoration(),
             onTap: () {
-              context.rootNavigator
-                  .push(agencyDetailedScreenRoute(news.source!));
+              context.navigator.push(articleDetailedScreenRoute(news));
             },
             child: Card(
               clipBehavior: Clip.antiAlias,
@@ -41,18 +42,18 @@ class TopHeadlinesCard extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  // Positioned.fill(
-                  //   child: CachedNetworkImage(
-                  //     imageUrl: news.urlToImage ?? '',
-                  //     fit: BoxFit.cover,
-                  //     // TODO replace error widget with placeholder
-                  //     placeholder: (context, url) =>
-                  //         const Center(child: CircularProgressIndicator()),
-                  //     errorWidget: (context, url, error) => Container(
-                  //       color: context.theme.bg,
-                  //     ),
-                  //   ),
-                  // ),
+                  Positioned.fill(
+                    child: CachedNetworkImage(
+                      imageUrl: news.urlToImage ?? '',
+                      fit: BoxFit.cover,
+                      // TODO replace error widget with placeholder
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => Container(
+                        color: context.theme.bg,
+                      ),
+                    ),
+                  ),
                   Positioned(
                     bottom: 0,
                     left: 0,
@@ -95,16 +96,16 @@ class TopHeadlinesCard extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                child: Text(
+                              Text(
+                                Formatter.stringDateFormatter(
                                   news.publishedAt ?? '',
-                                  softWrap: false,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.clip,
-                                  style: context.theme.textTheme.ui14Regular(
-                                    context,
-                                    ColorPalette.mainWhite,
-                                  ),
+                                ),
+                                softWrap: false,
+                                maxLines: 1,
+                                overflow: TextOverflow.clip,
+                                style: context.theme.textTheme.ui14Regular(
+                                  context,
+                                  ColorPalette.mainWhite,
                                 ),
                               ),
                             ],

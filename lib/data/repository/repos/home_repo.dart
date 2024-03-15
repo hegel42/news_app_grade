@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../../../common/utils/formatter_utlis.dart';
+import '../../../common/utils/formatter_utils.dart';
 import '../../dio_settings/dio_exception.dart';
 import '../../models/article_response.dart';
 import '../../models/source_response.dart';
