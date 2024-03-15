@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../extensions/context_extension.dart';
+import '../main_theme/extensions/theme_data_extension.dart';
 
 class AppGestureDetector extends StatelessWidget {
   const AppGestureDetector({
@@ -23,7 +24,7 @@ class AppGestureDetector extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: context.theme.shadowColor,
+                color: context.theme.accentSecondary,
                 // spreadRadius: 0,
                 blurRadius: 16,
                 offset: const Offset(0, 4),
