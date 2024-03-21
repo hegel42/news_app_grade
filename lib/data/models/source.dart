@@ -1,23 +1,21 @@
-// generated with Dart Data class generator
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 class Source {
+  Source({
+    required this.id,
+    this.name,
+    this.description,
+    this.url,
+    this.category,
+    this.country,
+    this.language,
+  });
 
-  Source(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.url,
-      required this.category,
-      required this.country,
-      required this.language,});
+  factory Source.mock() {
+    return Source(id: 'mock');
+  }
 
-  Source.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        description = json['description'],
-        url = json['url'],
-        category = json['category'],
-        country = json['country'],
-        language = json['language'];
   final dynamic id;
   final String? name;
   final String? description;
@@ -25,4 +23,34 @@ class Source {
   final String? category;
   final String? country;
   final String? language;
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'description': description,
+      'url': url,
+      'category': category,
+      'country': country,
+      'language': language,
+    };
+  }
+
+  factory Source.fromMap(Map<String, dynamic> map) {
+    return Source(
+      id: map['id'] as dynamic,
+      name: map['name'] != null ? map['name'] as String : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      url: map['url'] != null ? map['url'] as String : null,
+      category: map['category'] != null ? map['category'] as String : null,
+      country: map['country'] != null ? map['country'] as String : null,
+      language: map['language'] != null ? map['language'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Source.fromJson(String source) =>
+      Source.fromMap(json.decode(source) as Map<String, dynamic>);
 }

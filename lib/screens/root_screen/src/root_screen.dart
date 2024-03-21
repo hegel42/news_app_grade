@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_grade/common/gen/assets.gen.dart';
+import '../../../common/extensions/context_extension.dart';
+import '../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../main_screen/feature.dart';
 import '../../settings_screen/feature.dart';
 import '../../source_screen/feature.dart';
 import 'package:provider/provider.dart';
+// import 'ass';
 
 import 'vm.dart';
 
@@ -46,13 +50,13 @@ class MainAppBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8),
-      decoration: const BoxDecoration(
-        // color: context.theme.bg,
-        boxShadow: [
+      decoration: BoxDecoration(
+        color: context.theme.bg,
+        boxShadow: const [
           BoxShadow(
             color: Color(0xFFB6BBC6),
             blurRadius: 16,
-            offset: Offset(0, 4),
+            offset: Offset(0, 2),
           ),
         ],
       ),
@@ -62,7 +66,6 @@ class MainAppBottomBar extends StatelessWidget {
           children: [
             Expanded(
               child: _NavBarItem(
-                // title: context.locale?.calendar ?? '',
                 title: 'Main',
                 index: 0,
               ),
@@ -112,14 +115,7 @@ class _NavBarItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.abc,
-                color: isActive ? Colors.black : Colors.grey,
-              ),
-              // SvgPicture.asset(
-              //   icon,
-              //   color: isActive ? Colors.black : Colors.grey,
-              // ),
+              Assets.svg.home.svg(),
               const SizedBox(
                 height: 4,
               ),

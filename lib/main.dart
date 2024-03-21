@@ -10,7 +10,7 @@ import 'screens/main_screen/src/bloc/home_screen_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
+// test
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -36,7 +36,7 @@ void main() {
               BlocProvider<HomeScreenBloc>(
                 create: (context) => HomeScreenBloc(
                   context.read<Repository>(),
-                )..add(FetchHotNews()),
+                )..add(FetchHomeDataEvent()),
               ),
             ],
             child: const MainApp(),
