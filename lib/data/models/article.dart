@@ -17,7 +17,12 @@ class Article {
   });
 
   factory Article.mock() {
-    return Article();
+    return Article(
+        // TODO add mock library?
+        content: 'content',
+        author: 'author',
+        publishedAt: 'publishedAt',
+        title: 'title');
   }
 
   final Source? source;

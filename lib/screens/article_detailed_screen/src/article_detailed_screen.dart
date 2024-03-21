@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
+import '../../../common/modals/app_snackbar.dart';
 import '../../../common/utils/formatter_utils.dart';
+import '../../../common/utils/launcher_utils.dart';
 import '../../../common/widgets/app_filled_button.dart';
 import '../../../common/widgets/main_app_bar.dart';
 import '../../../data/models/article.dart';
@@ -51,7 +51,6 @@ class ArticleDetailedScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: Text(
@@ -61,7 +60,6 @@ class ArticleDetailedScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        // article.publishedAt ?? '',
                         Formatter.stringDateFormatter(
                           article.publishedAt ?? '',
                         ),
@@ -93,7 +91,15 @@ class ArticleDetailedScreen extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           child: AppFilledButton(
-            onTap: () {},
+            onTap: () {
+              // launchUrl(article.url ?? '');
+              launchInWebView(
+                article.url ?? '',
+                onError: () {
+                  showAppSnackBar(context, 'cant open URL', isError: true);
+                },
+              );
+            },
             buttonText: 'Read more',
           ),
         ),

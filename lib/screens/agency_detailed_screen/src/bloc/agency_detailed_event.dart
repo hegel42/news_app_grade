@@ -4,7 +4,6 @@ part of 'agency_detailed_bloc.dart';
 sealed class AgencyDetailedEvent {}
 
 final class AgencyDetailedFetchData extends AgencyDetailedEvent {
-  final String source;
-
   AgencyDetailedFetchData({required this.source});
+  final String source;
 }

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import '../../../../common/utils/formatter_utils.dart';
 
 import '../../../../common/extensions/context_extension.dart';
 import '../../../../common/main_theme/color_palette.dart';
@@ -89,6 +90,7 @@ class _CardItem extends StatelessWidget {
               fit: BoxFit.cover,
               placeholder: (context, url) =>
                   const Center(child: CircularProgressIndicator()),
+              // TODO add placeholder
               errorWidget: (context, url, error) => Container(
                 padding: const EdgeInsets.all(20),
                 color: Colors.red,
@@ -118,7 +120,9 @@ class _CardItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  news.publishedAt ?? '',
+                  Formatter.stringDateFormatter(
+                    news.publishedAt ?? '',
+                  ),
                   style: context.theme.textTheme
                       .ui12Regular(context, context.theme.text),
                 ),
