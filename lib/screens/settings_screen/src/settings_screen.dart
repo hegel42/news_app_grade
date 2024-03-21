@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../common/extensions/context_extension.dart';
+import '../../../common/localization/provider/change_theme_provider.dart';
+import '../../../common/main_theme/color_palette.dart';
+import '../../../common/main_theme/extensions/text_theme_extension.dart';
+import '../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../../common/widgets/main_app_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -10,36 +16,69 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  bool swithValue = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MainAppBar(title: 'title'),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: const MainAppBar(
+          title: 'Settings',
+          needBackButton: false,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Dark Theme',
+                    style: context.theme.textTheme
+                        .ui22Medium(context, context.theme.text),
+                  ),
+                  Switch(
+                    activeColor: ColorPalette.cardShadowColor,
+                    activeThumbImage: const AssetImage('assets/png/moon.png'),
+                    inactiveThumbImage: const AssetImage('assets/png/sun.png'),
+                    value: swithValue,
+                    onChanged: (value) {
+                      context.read<ChangeThemeProvider>().changeTheme();
+                      // setState(() {
+                      swithValue = value;
+                      // });
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Text(
+                '2 Change language???',
+                style: context.theme.textTheme
+                    .ui22Medium(context, context.theme.text),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                '3 select news region, eg all, us, ru ...',
+                style: context.theme.textTheme
+                    .ui22Medium(context, context.theme.text),
+              ),
+              Text(
+                'add info widget',
+                style: context.theme.textTheme
+                    .ui14Medium(context, context.theme.text),
+              ),
+              Text(
+                'save in shared prefs`',
+                style: context.theme.textTheme
+                    .ui14Medium(context, context.theme.text),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
