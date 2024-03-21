@@ -4,7 +4,7 @@ import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../main_screen/feature.dart';
 import '../../settings_screen/feature.dart';
-import '../../source_screen/feature.dart';
+import '../../search_screen/feature.dart';
 import 'package:provider/provider.dart';
 // import 'ass';
 
@@ -28,11 +28,11 @@ class RootScreen extends StatelessWidget {
                 ),
                 Navigator(
                   key: model.navigatorKeys[1],
-                  onGenerateRoute: settingsScreenRoute,
+                  onGenerateRoute: searchScreenRoute,
                 ),
                 Navigator(
                   key: model.navigatorKeys[2],
-                  onGenerateRoute: sourceScreenRoute,
+                  onGenerateRoute: settingsScreenRoute,
                 ),
               ],
             ),
@@ -72,13 +72,13 @@ class MainAppBottomBar extends StatelessWidget {
             ),
             Expanded(
               child: _NavBarItem(
-                title: 'Screen 2',
+                title: 'Search',
                 index: 1,
               ),
             ),
             Expanded(
               child: _NavBarItem(
-                title: 'Screen 3',
+                title: 'Settings',
                 index: 2,
               ),
             ),
