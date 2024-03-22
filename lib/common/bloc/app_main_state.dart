@@ -9,23 +9,14 @@ class AppMainHomeScreen extends MainBlocState {}
 
 class SplashState extends MainBlocState {}
 
-class NotifyListeners extends MainBlocState {
-  NotifyListeners({required this.isAuthorized});
-  final bool isAuthorized;
+class MainErrorState extends MainBlocState {
+  MainErrorState({required this.message});
+
+  final String message;
 }
 
-class ClearCurrentStackState extends MainBlocState {
-  ClearCurrentStackState({this.stackIndex});
-  final int? stackIndex;
-}
+class RegionChangeState extends MainBlocState {
+  RegionChangeState({required this.regionCode});
 
-class NavigateToOtherScreenState extends MainBlocState {
-  NavigateToOtherScreenState({
-    this.stackIndex,
-    this.onSecondNavigate,
-    required this.withClearStack,
-  });
-  final int? stackIndex;
-  final String? onSecondNavigate;
-  final bool withClearStack;
+  final String regionCode;
 }

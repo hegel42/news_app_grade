@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/bloc/app_main_bloc.dart';
 import '../../../common/constants/main_constants.dart';
 import '../../../common/extensions/context_extension.dart';
+import '../../../common/widgets/app_gesture_detector.dart';
 import '../../../data/provider/change_theme_provider.dart';
 import '../../../common/main_theme/color_palette.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
@@ -76,6 +78,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 context.locale.selectNewsRegion,
                 style: context.theme.textTheme
                     .ui22Medium(context, context.theme.text),
+              ),
+              AppGestureDetector(
+                onTap: () {
+                  context
+                      .read<AppMainBloc>()
+                      .add(ChangeNewsRegion(regionCode: 'ru'));
+                },
+                child: const Text('print g'),
               ),
               Text(
                 'add info widget',

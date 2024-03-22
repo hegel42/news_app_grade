@@ -45,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             body: RefreshIndicator(
               onRefresh: () async {
+                //
                 context.read<HomeScreenBloc>().add(FetchHomeDataEvent());
                 // return false;
               },

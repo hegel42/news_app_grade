@@ -38,7 +38,9 @@ void main() {
               BlocProvider<HomeScreenBloc>(
                 create: (context) => HomeScreenBloc(
                   context.read<Repository>(),
-                )..add(FetchHomeDataEvent()),
+                )..add(FetchHomeDataEvent(
+                    regionCode: null,
+                  )),
               ),
             ],
             child: const MainApp(),

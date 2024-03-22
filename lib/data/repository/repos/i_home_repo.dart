@@ -2,11 +2,11 @@ import '../../models/article_response.dart';
 import '../../models/source_response.dart';
 
 abstract class IHomoRepo {
-  Future<ArticlesResponse> getTopHeadlines();
+  Future<ArticlesResponse> getTopHeadlines({String? regionCode});
 
-  Future<SourceResponse> getSources();
+  Future<SourceResponse> getSources({String? regionCode});
 
-  Future<ArticlesResponse> getLatestNews();
+  Future<ArticlesResponse> getLatestNews({String? regionCode});
 
   Future<ArticlesResponse> getArticleBySource({required String sourceId});
 }

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import '../../../common/utils/formatter_utils.dart';
 import '../../dio_settings/dio_exception.dart';
 import '../../models/article_response.dart';
 import '../../models/source_response.dart';
@@ -8,11 +7,16 @@ import 'i_home_repo.dart';
 class HomeRepo extends IHomoRepo {
   HomeRepo({required this.dio});
   final Dio dio;
-
+// ru de fr it // us = en language/ country  code
   @override
-  Future<ArticlesResponse> getTopHeadlines() async {
+  Future<ArticlesResponse> getTopHeadlines({String? regionCode}) async {
     try {
-      final response = await dio.get('top-headlines?country=us');
+      final response = await dio.get(
+        'top-headlines',
+        queryParameters: {
+          'country': (regionCode != null) ? regionCode : 'us',
+        },
+      );
 
       return ArticlesResponse.fromJson(response.toString());
     } on DioException catch (e) {
@@ -22,16 +26,17 @@ class HomeRepo extends IHomoRepo {
   }
 
   @override
-  Future<ArticlesResponse> getLatestNews() async {
-    // TODO add request model
-    final fromDate = Formatter.requestDateFormatter(DateTime.now().toString());
-    final toDate = Formatter.requestDateFormatter(
-      DateTime.now().subtract(const Duration(days: 3)).toString(),
-    );
-
+  Future<ArticlesResponse> getLatestNews({String? regionCode}) async {
     try {
       final response = await dio.get(
-        'everything?q=from=$fromDate&to=$toDate&pageSize=20',
+        'everything',
+        queryParameters: {
+          'pageSized': 20,
+          'language': regionCode ?? 'en',
+          // used for filling, api need at least one limiting parameter
+          'q': 'a',
+          'sortBy': 'publishedAt',
+        },
         // queryParameters:
       );
 
@@ -43,10 +48,14 @@ class HomeRepo extends IHomoRepo {
   }
 
   @override
-  Future<SourceResponse> getSources() async {
+  Future<SourceResponse> getSources({String? regionCode}) async {
     try {
-      final response = await dio
-          .get('top-headlines/sources', queryParameters: {'country': 'us'});
+      final response = await dio.get(
+        'top-headlines/sources',
+        queryParameters: {
+          'country': regionCode ?? 'us',
+        },
+      );
 
       return SourceResponse.fromJson(response.toString());
     } on DioException catch (e) {
