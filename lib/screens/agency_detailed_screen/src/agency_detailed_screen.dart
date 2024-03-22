@@ -6,6 +6,7 @@ import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../../common/modals/app_snackbar.dart';
 import '../../../common/utils/launcher_utils.dart';
+import '../../../common/utils/translate_utils.dart';
 import '../../../common/widgets/main_app_bar.dart';
 import '../../../common/widgets/main_article_card.dart';
 import '../../../data/models/source.dart';
@@ -51,7 +52,7 @@ class AgencyDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Category: ${source.category ?? ''}',
+                          '${context.locale.category}: ${returnTranslatedCategory(context, source.category ?? '')}',
                           style: context.theme.textTheme
                               .ui16Medium(context, context.theme.text),
                         ),

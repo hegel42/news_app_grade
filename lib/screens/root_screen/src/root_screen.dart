@@ -68,21 +68,21 @@ class MainAppBottomBar extends StatelessWidget {
           children: [
             Expanded(
               child: _NavBarItem(
-                title: 'Main',
+                title: context.locale.main,
                 index: 0,
                 asset: Assets.svg.home.path,
               ),
             ),
             Expanded(
               child: _NavBarItem(
-                title: 'Search',
+                title: context.locale.search,
                 index: 1,
                 asset: Assets.svg.home.path,
               ),
             ),
             Expanded(
               child: _NavBarItem(
-                title: 'Settings',
+                title: context.locale.settings,
                 index: 2,
                 asset: Assets.svg.home.path,
               ),

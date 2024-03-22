@@ -1,7 +1,32 @@
 {
-    "@@locale": "en",
-    "language": "English",
-    "helloWorld": "Hello World!",
-    "centerText": "This is just some dummy text"
-  }
-  
+  "@@locale": "en",
+  "language": "English",
+  "helloWorld": "Hello World!",
+  "centerText": "This is just some dummy text",
+  "englishLg": "English",
+  "russianLg": "Russian",
+  "darkTheme": "Dark theme",
+  "changeLanguage": "Change language",
+  "selectNewsRegion": "Select news region",
+  "settings": "Settings",
+  "search": "Search",
+  "main": "Main",
+  "searchArticle": "Search article",
+  "relevance": "Relevance",
+  "popularity": "Popularity",
+  "publishDate": "Publish date",
+  "hotNews": "Hot news",
+  "popularNewsAgencies": "Popular news agencies",
+  "recentNews": "Recent news",
+  "readMore": "Read more",
+  "cantOpenURlError": "Can't open link",
+  "nothingFound": "Nothing found",
+  "category": "Category",
+  "general": "General",
+  "business": "Business",
+  "entertainment": "Entertainment",
+  "health": "Health",
+  "science": "Science",
+  "sports": "Sport",
+  "technology": "Technology"
+}

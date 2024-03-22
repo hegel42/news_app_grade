@@ -77,7 +77,7 @@ class ArticleDetailedScreen extends StatelessWidget {
                   Text(
                     Formatter.longTextFormatter(
                       // TODO add placeholder
-                      article.content ?? 'Read more on website ->',
+                      article.content ?? '',
                     ),
                     style: context.theme.textTheme
                         .ui16Regular(context, context.theme.text),
@@ -96,11 +96,15 @@ class ArticleDetailedScreen extends StatelessWidget {
               launchInWebView(
                 article.url ?? '',
                 onError: () {
-                  showAppSnackBar(context, 'cant open URL', isError: true);
+                  showAppSnackBar(
+                    context,
+                    context.locale.cantOpenURlError,
+                    isError: true,
+                  );
                 },
               );
             },
-            buttonText: 'Read more',
+            buttonText: context.locale.readMore,
           ),
         ),
       ),

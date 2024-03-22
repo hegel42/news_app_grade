@@ -25,9 +25,8 @@ class AppGestureDetector extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: context.theme.accentSecondary,
-                // spreadRadius: 0,
-                blurRadius: 16,
-                offset: const Offset(0, 4),
+                blurRadius: 4,
+                offset: const Offset(0, 2),
               ),
             ],
           ),

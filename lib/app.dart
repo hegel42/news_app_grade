@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'common/bloc/app_main_bloc.dart';
-import 'common/localization/provider/change_theme_provider.dart';
-import 'common/localization/provider/locale_provider.dart';
+import 'data/provider/change_theme_provider.dart';
+import 'data/provider/locale_provider.dart';
 import 'common/main_theme/main_theme_data.dart';
 import 'screens/root_screen/feature.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,16 +26,15 @@ class _MainAppState extends State<MainApp> {
 
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-          statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark),
+        statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+      ),
     );
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       supportedLocales: AppLocalizations.supportedLocales,
-      // locale: ,
-      // navigatorKey: ,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -43,12 +42,7 @@ class _MainAppState extends State<MainApp> {
         GlobalWidgetsLocalizations.delegate,
       ],
       locale: Provider.of<LocaleProvider>(context).locale,
-      // navigatorKey: context.read<Repository>().alice.getNavigatorKey(),
-      // localizationsDelegates: AppLocalizations.localizationsDelegates,
-      // supportedLocales: [Locale('ru', "RU")],
-      // TODO add here
       theme: isDark ? mainAppDarkTheme : mainAppLightTheme,
-
       home: BlocConsumer<AppMainBloc, MainBlocState>(
         listener: (context, state) {},
         builder: (context, state) {
