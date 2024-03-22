@@ -49,7 +49,7 @@ class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      cursorColor: context.theme.accent,
+      cursorColor: context.theme.text,
       controller: controller,
       focusNode: widget.focus,
       textCapitalization: TextCapitalization.sentences,

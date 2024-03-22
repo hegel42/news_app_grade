@@ -41,15 +41,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         .ui22Medium(context, context.theme.text),
                   ),
                   Switch(
-                    activeColor: ColorPalette.cardShadowColor,
+                    activeColor: ColorPalette.secondaryAccent,
                     activeThumbImage: const AssetImage('assets/png/moon.png'),
                     inactiveThumbImage: const AssetImage('assets/png/sun.png'),
                     value: swithValue,
                     onChanged: (value) {
                       context.read<ChangeThemeProvider>().changeTheme();
-                      // setState(() {
+
                       swithValue = value;
-                      // });
                     },
                   ),
                 ],

@@ -26,9 +26,9 @@ class _MainAppState extends State<MainApp> {
 
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-          statusBarBrightness: isDark ? Brightness.light : Brightness.dark,
+          statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
           statusBarColor: Colors.transparent,
-          statusBarIconBrightness: isDark ? Brightness.dark : Brightness.light),
+          statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark),
     );
 
     return MaterialApp(
@@ -47,7 +47,7 @@ class _MainAppState extends State<MainApp> {
       // localizationsDelegates: AppLocalizations.localizationsDelegates,
       // supportedLocales: [Locale('ru', "RU")],
       // TODO add here
-      theme: isDark ? mainAppLightTheme : mainAppDarkTheme,
+      theme: isDark ? mainAppDarkTheme : mainAppLightTheme,
 
       home: BlocConsumer<AppMainBloc, MainBlocState>(
         listener: (context, state) {},

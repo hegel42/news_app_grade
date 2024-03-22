@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../common/utils/formatter_utils.dart';
 
 import '../../../../common/extensions/context_extension.dart';
-import '../../../../common/main_theme/color_palette.dart';
 import '../../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../../../common/widgets/app_gesture_detector.dart';
@@ -71,7 +70,7 @@ class _CardItem extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         boxShadow: [
           BoxShadow(
-            color: ColorPalette.border.withOpacity(0.13),
+            color: context.theme.cardShadow.withOpacity(0.2),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -83,17 +82,25 @@ class _CardItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: CachedNetworkImage(
-              imageUrl: news.urlToImage ?? '',
-              fit: BoxFit.cover,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              // TODO add placeholder
-              errorWidget: (context, url, error) => Container(
-                padding: const EdgeInsets.all(20),
-                color: Colors.red,
+          Expanded(
+            child: ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(16)),
+              child: ConstrainedBox(
+                constraints:
+                    BoxConstraints(minWidth: MediaQuery.of(context).size.width),
+                // color: Colors.red,
+                child: CachedNetworkImage(
+                  imageUrl: news.urlToImage ?? '',
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  // TODO add placeholder
+                  errorWidget: (context, url, error) => Container(
+                    padding: const EdgeInsets.all(20),
+                    color: Colors.red,
+                  ),
+                ),
               ),
             ),
           ),

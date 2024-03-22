@@ -70,7 +70,9 @@ class HeadlineCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppGestureDetector(
-      alternativeDecoration: BoxDecoration(color: context.theme.bg),
+      alternativeDecoration: BoxDecoration(
+          color: context.theme.bg,
+          borderRadius: BorderRadius.all(Radius.circular(16))),
       onTap: () {
         context.navigator.push(articleDetailedScreenRoute(news));
       },
