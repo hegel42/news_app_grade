@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'common/bloc/app_main_bloc.dart';
-import 'common/extensions/context_extension.dart';
 import 'data/provider/change_theme_provider.dart';
 import 'data/provider/locale_provider.dart';
 import 'common/main_theme/main_theme_data.dart';

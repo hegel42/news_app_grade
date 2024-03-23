@@ -20,12 +20,14 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
         ChangeNotifierProvider(create: (_) => ChangeThemeProvider()),
+        // ChangeNotifierProvider(
+        //   create: (context) => ChangeRegionProvider(),
+        // ),
       ],
       builder: (context, child) {
         return MultiRepositoryProvider(
           providers: [
             RepositoryProvider(create: (context) => Repository()),
-            // TODO add locale
           ],
           child: MultiBlocProvider(
             providers: [
@@ -38,9 +40,9 @@ void main() {
               BlocProvider<HomeScreenBloc>(
                 create: (context) => HomeScreenBloc(
                   context.read<Repository>(),
-                )..add(FetchHomeDataEvent(
-                    regionCode: null,
-                  )),
+                )..add(
+                    FetchHomeDataEvent(),
+                  ),
               ),
             ],
             child: const MainApp(),

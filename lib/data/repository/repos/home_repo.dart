@@ -27,17 +27,26 @@ class HomeRepo extends IHomoRepo {
 
   @override
   Future<ArticlesResponse> getLatestNews({String? regionCode}) async {
+    // only language select posible
+    String handleRegionCode() {
+      if (regionCode == null) {
+        return 'en';
+      } else if (regionCode == 'us') {
+        return 'en';
+      } else {
+        return regionCode;
+      }
+    }
+
     try {
       final response = await dio.get(
         'everything',
         queryParameters: {
           'pageSized': 20,
-          'language': regionCode ?? 'en',
-          // used for filling, api need at least one limiting parameter
+          'language': handleRegionCode(),
           'q': 'a',
           'sortBy': 'publishedAt',
         },
-        // queryParameters:
       );
 
       return ArticlesResponse.fromJson(response.toString());

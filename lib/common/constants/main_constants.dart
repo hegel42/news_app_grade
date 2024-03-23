@@ -5,4 +5,5 @@ class MainConstants {
   // prefs contants
   static const prefsLanguageCode = 'languageCode';
   static const prefsThemeIsDark = 'isDark';
+  static const prefsRegion = 'regionCode';
 }

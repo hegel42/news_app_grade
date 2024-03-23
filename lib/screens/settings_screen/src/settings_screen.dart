@@ -4,13 +4,14 @@ import 'package:provider/provider.dart';
 import '../../../common/bloc/app_main_bloc.dart';
 import '../../../common/constants/main_constants.dart';
 import '../../../common/extensions/context_extension.dart';
-import '../../../common/widgets/app_gesture_detector.dart';
 import '../../../data/provider/change_theme_provider.dart';
 import '../../../common/main_theme/color_palette.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
 import '../../../common/widgets/main_app_bar.dart';
+import 'components/region_item.dart';
 import 'components/select_language_item.dart';
+import 'models/region_model.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -20,8 +21,17 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  String? selectedRegionCode;
+
   @override
   Widget build(BuildContext context) {
+    final regionList = [
+      RegionModel(name: 'Russia', code: 'ru'),
+      RegionModel(name: 'America', code: 'us'),
+      RegionModel(name: 'France', code: 'fr'),
+      RegionModel(name: 'Italy', code: 'it'),
+    ];
+
     return SafeArea(
       child: Scaffold(
         appBar: MainAppBar(
@@ -79,23 +89,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 style: context.theme.textTheme
                     .ui22Medium(context, context.theme.text),
               ),
-              AppGestureDetector(
-                onTap: () {
-                  context
-                      .read<AppMainBloc>()
-                      .add(ChangeNewsRegion(regionCode: 'ru'));
-                },
-                child: const Text('print g'),
-              ),
-              Text(
-                'add info widget',
-                style: context.theme.textTheme
-                    .ui14Medium(context, context.theme.text),
-              ),
-              Text(
-                'save in shared prefs`',
-                style: context.theme.textTheme
-                    .ui14Medium(context, context.theme.text),
+              Wrap(
+                spacing: 6,
+                children: [
+                  ...List.generate(regionList.length, (index) {
+                    final item = regionList[index];
+
+                    return RegionItem(
+                      name: item.name,
+                      regionCode: item.code,
+                      isSelected: item.code == selectedRegionCode,
+                      onSelect: () {
+                        setState(() {
+                          selectedRegionCode = item.code;
+                          context
+                              .read<AppMainBloc>()
+                              .add(ChangeNewsRegion(regionCode: item.code));
+                        });
+                      },
+                    );
+                  }),
+                ],
               ),
             ],
           ),
