@@ -17,27 +17,25 @@ class Formatter {
     }
   }
 
-  static String requestDateFormatter(String date) {
-    final dateTime = DateTime.parse(date);
-    final formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
-    return formattedDate;
-  }
+  // static String requestDateFormatter(String date) {
+  //   final dateTime = DateTime.parse(date);
+  //   final formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
+  //   return formattedDate;
+  // }
 
   static String longTextFormatter(String text) {
-    // Regular expression pattern to match the ending pattern ['any word'... [+'any number' chars]]
     final pattern = RegExp(r'\[\+\d+ chars\]');
 
-    // Replace the pattern with an empty string
     final result = text.replaceAll(pattern, '');
 
     return result;
   }
 }
 
-DateTime dateFormat(String date) {
-  return DateFormat('yyyy-MM-dd HH:mm:ss').parse(date);
-}
+// DateTime dateFormat(String date) {
+//   return DateFormat('yyyy-MM-dd').parse(date);
+// }
 
-String dateToString(DateTime date) {
-  return DateFormat.yMd('ru').format(date);
-}
+// String dateToString(DateTime date) {
+//   return DateFormat.yMd('ru').format(date);
+// }
