@@ -1,10 +1,10 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
-import '../extensions/context_extension.dart';
-import '../main_theme/color_palette.dart';
-import '../main_theme/extensions/text_theme_extension.dart';
-import '../main_theme/extensions/theme_data_extension.dart';
+import '../../extensions/context_extension.dart';
+import '../../main_theme/color_palette.dart';
+import '../../main_theme/extensions/text_theme_extension.dart';
+import '../../main_theme/extensions/theme_data_extension.dart';
 
 void showAppSnackBar(
   BuildContext context,
