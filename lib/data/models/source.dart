@@ -13,7 +13,10 @@ class Source {
   });
 
   factory Source.mock() {
-    return Source(id: 'mock');
+    return Source(
+      id: 'bbc-news',
+      name: 'BBC News',
+    );
   }
 
   final dynamic id;
