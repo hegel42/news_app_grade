@@ -17,8 +17,8 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const MainAppBar(
-          title: 'Search news',
+        appBar: MainAppBar(
+          title: context.locale.searchArticle,
           needBackButton: false,
         ),
         body: BlocBuilder<SearchScreenBloc, SearchScreenState>(
@@ -36,11 +36,10 @@ class SearchScreen extends StatelessWidget {
                         context.read<SearchScreenBloc>().add(
                               SearchArticleEvent(
                                 searchText: searchValue ?? '',
-                                // sortId: 'relevancy',
                               ),
                             );
                       },
-                      hintText: 'Search article',
+                      hintText: context.locale.search,
                     ),
                   ),
                   const SliverToBoxAdapter(
@@ -76,7 +75,7 @@ class SearchScreen extends StatelessWidget {
                   if (state is SearchScreenEmpty)
                     SliverToBoxAdapter(
                       child: Text(
-                        'Nothing found',
+                        context.locale.nothingFound,
                         style: context.theme.textTheme
                             .ui18Medium(context, context.theme.text),
                         textAlign: TextAlign.center,
@@ -92,10 +91,6 @@ class SearchScreen extends StatelessWidget {
             );
           },
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {},
-        //   child: const Icon(Icons.arrow_drop_up),
-        // ),
       ),
     );
   }

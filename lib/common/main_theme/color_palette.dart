@@ -20,4 +20,5 @@ class ColorPalette {
   static const Color warning = Color(0xffE94335);
 
   static const Color cardShadowColor = Color(0x190B2330);
+  static const Color cardShadowColorLight = Color.fromARGB(23, 184, 188, 189);
 }

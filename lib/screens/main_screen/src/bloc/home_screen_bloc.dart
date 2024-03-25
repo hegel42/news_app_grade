@@ -25,11 +25,14 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
   ) async {
     try {
       emit(HomeScreenLoading());
-      final topHeadlinesResponse = await repository.homeRepo.getTopHeadlines();
+      final topHeadlinesResponse = await repository.homeRepo
+          .getTopHeadlines(regionCode: event.regionCode);
 
-      final topAgenciesResponse = await repository.homeRepo.getSources();
+      final topAgenciesResponse =
+          await repository.homeRepo.getSources(regionCode: event.regionCode);
 
-      final recentArticlesResponse = await repository.homeRepo.getLatestNews();
+      final recentArticlesResponse =
+          await repository.homeRepo.getLatestNews(regionCode: event.regionCode);
       emit(
         HomeScreenDataState(
           topHeadlines: topHeadlinesResponse.articles ?? [],

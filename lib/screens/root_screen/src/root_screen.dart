@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_grade/common/gen/assets.gen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../../common/gen/assets.gen.dart';
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
+import '../../../common/widgets/app_gesture_detector.dart';
 import '../../main_screen/feature.dart';
 import '../../settings_screen/feature.dart';
 import '../../search_screen/feature.dart';
@@ -52,34 +54,37 @@ class MainAppBottomBar extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: context.theme.bg,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Color(0xFFB6BBC6),
+            color: context.theme.cardShadow,
             blurRadius: 16,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: const SafeArea(
+      child: SafeArea(
         top: false,
         child: Row(
           children: [
             Expanded(
               child: _NavBarItem(
-                title: 'Main',
+                title: context.locale.main,
                 index: 0,
+                asset: Assets.svg.home.path,
               ),
             ),
             Expanded(
               child: _NavBarItem(
-                title: 'Search',
+                title: context.locale.search,
                 index: 1,
+                asset: Assets.svg.home.path,
               ),
             ),
             Expanded(
               child: _NavBarItem(
-                title: 'Settings',
+                title: context.locale.settings,
                 index: 2,
+                asset: Assets.svg.home.path,
               ),
             ),
           ],
@@ -94,11 +99,13 @@ class _NavBarItem extends StatelessWidget {
     // required this.icon,
     required this.index,
     required this.title,
+    required this.asset,
   });
   // final String icon;
 
   final int index;
   final String title;
+  final String asset;
 
   @override
   Widget build(BuildContext context) {
@@ -106,26 +113,39 @@ class _NavBarItem extends StatelessWidget {
     final isActive = model.activeIndex == index;
     return SizedBox(
       height: 56,
-      child: GestureDetector(
+      child: AppGestureDetector(
+        alternativeDecoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          color: context.theme.border.withOpacity(isActive ? 0.2 : 0),
+        ),
         onTap: () {
           model.changeScreen(index);
         },
-        child: ColoredBox(
-          color: Colors.transparent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Assets.svg.home.svg(),
-              const SizedBox(
-                height: 4,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              asset,
+              colorFilter: ColorFilter.mode(
+                isActive
+                    ? context.theme.text
+                    : context.theme.border.withOpacity(0.9),
+                BlendMode.srcIn,
               ),
-              Text(
-                title,
-                style: TextStyle(color: isActive ? Colors.black : Colors.grey),
-                textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                color: isActive
+                    ? context.theme.text
+                    : context.theme.border.withOpacity(0.9),
               ),
-            ],
-          ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

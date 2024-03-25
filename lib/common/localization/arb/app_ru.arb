@@ -1,7 +1,32 @@
 {
-    "@@locale": "ru",
-    "language": "Русский",
-    "helloWorld": "Тест",
-    "centerText": "Текст"
-
-  }
+  "@@locale": "ru",
+  "language": "Русский",
+  "helloWorld": "Тест",
+  "centerText": "Текст",
+  "englishLg": "Английский",
+  "russianLg": "Русский",
+  "darkTheme": "Темная тема",
+  "changeLanguage": "Сменить язык",
+  "selectNewsRegion": "Выбрать регион новостей",
+  "settings": "Настройки",
+  "search": "Поиск",
+  "main": "Главная",
+  "searchArticle": "Поиск статьи",
+  "relevance": "Актуальность",
+  "popularity": "Популярность",
+  "publishDate": "Дата публикации",
+  "hotNews": "Горячие новости",
+  "popularNewsAgencies": "Популярные СМИ",
+  "recentNews": "Свежие новости",
+  "readMore": "Читать далее",
+  "cantOpenURlError": "Невозможно открыть ссылку",
+  "nothingFound": "Ничего не найдено",
+  "category": "Категория",
+  "general": "Общий",
+  "business": "Бизнес",
+  "entertainment": "Развлечения",
+  "health": "Здоровье",
+  "science": "Наука",
+  "sports": "Спорт",
+  "technology": "Технологии"
+}

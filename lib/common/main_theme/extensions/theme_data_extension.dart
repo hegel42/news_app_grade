@@ -12,15 +12,19 @@ extension ThemeDataExtension on ThemeData {
 
   Color get altText => isDark ? ColorPalette.grey : ColorPalette.grey;
 
-  Color get accent => isDark ? ColorPalette.primaryAccent : ColorPalette.primaryAccent;
+  Color get accent =>
+      isDark ? ColorPalette.primaryAccent : ColorPalette.primaryAccent;
 
-  Color get accentSecondary => isDark ? ColorPalette.secondaryAccent : ColorPalette.secondaryAccent;
+  Color get accentSecondary =>
+      isDark ? ColorPalette.secondaryAccent : ColorPalette.secondaryAccent;
 
   Color get error => isDark ? ColorPalette.error : ColorPalette.error;
 
   Color get statusError => isDark ? ColorPalette.error : ColorPalette.error;
 
-  Color get statusSuccess => isDark ? ColorPalette.success : ColorPalette.success;
+  Color get statusSuccess =>
+      isDark ? ColorPalette.success : ColorPalette.success;
 
-  Color get cardShadow => isDark ? ColorPalette.cardShadowColor : ColorPalette.cardShadowColor;
+  Color get cardShadow =>
+      isDark ? ColorPalette.grey : ColorPalette.cardShadowColor;
 }

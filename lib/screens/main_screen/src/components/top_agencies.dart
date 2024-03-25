@@ -4,6 +4,7 @@ import '../../../../common/extensions/context_extension.dart';
 import '../../../../common/extensions/string_extensions.dart';
 import '../../../../common/main_theme/color_palette.dart';
 import '../../../../common/main_theme/extensions/text_theme_extension.dart';
+import '../../../../common/utils/translate_utils.dart';
 import '../../../../common/widgets/app_gesture_detector.dart';
 import '../../../../common/widgets/shimmer_placeholder.dart';
 import '../../../../data/models/source.dart';
@@ -108,7 +109,8 @@ class _AgencyItem extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                (agency.category ?? '').capitalize(),
+                (returnTranslatedCategory(context, agency.category ?? ''))
+                    .capitalize(),
                 style: context.theme.textTheme.ui12Regular(context),
               ),
             ],

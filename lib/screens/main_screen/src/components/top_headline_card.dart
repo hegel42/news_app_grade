@@ -30,7 +30,7 @@ class TopHeadlinesCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageController = PageController(viewportFraction: 0.9);
+    final pageController = PageController(viewportFraction: 0.8);
 
     return SizedBox(
       height: 200,
@@ -69,93 +69,101 @@ class HeadlineCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppGestureDetector(
-      alternativeDecoration: BoxDecoration(color: context.theme.bg),
-      onTap: () {
-        context.navigator.push(articleDetailedScreenRoute(news));
-      },
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: AppGestureDetector(
+        alternativeDecoration: BoxDecoration(
+          color: context.theme.bg,
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
-        child: ShimmerPlaceholder(
-          isEnabled: isPlaceholder,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: CachedNetworkImage(
-                  imageUrl: news.urlToImage ?? '',
-                  fit: BoxFit.cover,
-                  // TODO replace error widget with placeholder
-                  placeholder: (context, url) =>
-                      const Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => Container(
-                    color: context.theme.bg,
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        ColorPalette.mainBlack.withOpacity(0.7),
-                        Colors.transparent,
-                      ],
+        onTap: () {
+          context.navigator.push(articleDetailedScreenRoute(news));
+        },
+        child: Card(
+          margin: const EdgeInsets.all(0),
+          // elevation: ,
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: ShimmerPlaceholder(
+            isEnabled: isPlaceholder,
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: CachedNetworkImage(
+                    imageUrl: news.urlToImage ?? '',
+                    fit: BoxFit.cover,
+                    // TODO replace error widget with placeholder
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) => Container(
+                      color: context.theme.bg,
                     ),
                   ),
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        news.title ?? '',
-                        style: context.theme.textTheme.ui18Medium(
-                          context,
-                          ColorPalette.mainWhite,
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        colors: [
+                          ColorPalette.mainBlack.withOpacity(0.7),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          news.title ?? '',
+                          style: context.theme.textTheme.ui18Medium(
+                            context,
+                            ColorPalette.mainWhite,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              news.source?.name ?? '',
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                news.source?.name ?? '',
+                                style: context.theme.textTheme.ui14Regular(
+                                  context,
+                                  ColorPalette.mainWhite,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              Formatter.stringDateFormatter(
+                                news.publishedAt ?? '',
+                              ),
+                              softWrap: false,
+                              maxLines: 1,
+                              overflow: TextOverflow.clip,
                               style: context.theme.textTheme.ui14Regular(
                                 context,
                                 ColorPalette.mainWhite,
                               ),
                             ),
-                          ),
-                          Text(
-                            Formatter.stringDateFormatter(
-                              news.publishedAt ?? '',
-                            ),
-                            softWrap: false,
-                            maxLines: 1,
-                            overflow: TextOverflow.clip,
-                            style: context.theme.textTheme.ui14Regular(
-                              context,
-                              ColorPalette.mainWhite,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
@@ -41,12 +39,13 @@ class _MainScreenState extends State<MainScreen> {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            appBar: const MainAppBar(
-              title: 'Hot news',
+            appBar: MainAppBar(
+              title: context.locale.hotNews,
               needBackButton: false,
             ),
             body: RefreshIndicator(
               onRefresh: () async {
+                //
                 context.read<HomeScreenBloc>().add(FetchHomeDataEvent());
                 // return false;
               },
@@ -87,7 +86,7 @@ class _MainScreenState extends State<MainScreen> {
                           [
                             const SizedBox(height: 16),
                             Text(
-                              'Popular news agencies',
+                              context.locale.popularNewsAgencies,
                               style: context.theme.textTheme.ui18Semibold(
                                 context,
                                 context.theme.text,
@@ -99,7 +98,7 @@ class _MainScreenState extends State<MainScreen> {
                             ),
                             const SizedBox(height: 16),
                             Text(
-                              'Recent news',
+                              context.locale.recentNews,
                               style: context.theme.textTheme.ui18Semibold(
                                 context,
                                 context.theme.text,
