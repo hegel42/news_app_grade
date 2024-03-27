@@ -28,5 +28,8 @@
   "health": "Health",
   "science": "Science",
   "sports": "Sport",
-  "technology": "Technology"
+  "technology": "Technology",
+  "defaultError": "Something went wrong",
+  "getSystemDetails": "Get system specification",
+  "getBatteryLevel": "Get battery level"
 }

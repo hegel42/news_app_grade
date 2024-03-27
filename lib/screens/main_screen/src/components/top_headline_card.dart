@@ -30,7 +30,7 @@ class TopHeadlinesCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageController = PageController(viewportFraction: 0.8);
+    final pageController = PageController(viewportFraction: 0.92);
 
     return SizedBox(
       height: 200,

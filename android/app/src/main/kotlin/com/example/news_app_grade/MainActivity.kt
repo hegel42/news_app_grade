@@ -22,14 +22,14 @@ class MainActivity : FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, methodChannel).setMethodCallHandler {
             // This method is invoked on the main thread.
                 call, result ->
-            // if (call.method == "getBatteryLevel") {
-            //     val batteryLevel = getBatteryLevel()
-            //     if (batteryLevel != -1) {
-            //         result.success(batteryLevel)
-            //     } else {
-            //         result.error("UNAVAILABLE", "Battery level not available.", null)
-            //     }
-            // } else 
+            if (call.method == "getBatteryLevel") {
+                val batteryLevel = getBatteryLevel()
+                if (batteryLevel != -1) {
+                    result.success(batteryLevel)
+                } else {
+                    result.error("UNAVAILABLE", "Battery level not available.", null)
+                }
+            } else 
             if(call.method == "getSystemDetail"){
                 val brandName=getSystemDetail()
                 if (brandName != null) {
@@ -47,16 +47,16 @@ class MainActivity : FlutterActivity() {
                 "Model: ${Build.MODEL}\n"
     }
 
-    // private fun getBatteryLevel(): Int {
-    //     val batteryLevel: Int
-    //     if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-    //         val batteryManager = getSystemService(Context.BATTERY_SERVICE) as BatteryManager
-    //         batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
-    //     } else {
-    //         val intent = ContextWrapper(applicationContext).registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
-    //         batteryLevel = intent!!.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) * 100 / intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-    //     }
+    private fun getBatteryLevel(): Int {
+        val batteryLevel: Int
+        if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+            val batteryManager = getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+            batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+        } else {
+            val intent = ContextWrapper(applicationContext).registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+            batteryLevel = intent!!.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) * 100 / intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
+        }
 
-    //     return batteryLevel
-    // }
+        return batteryLevel
+    }
 }

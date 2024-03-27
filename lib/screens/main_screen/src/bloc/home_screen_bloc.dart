@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
+import 'package:rxdart/rxdart.dart';
 import '../../../../data/models/article.dart';
 import '../../../../data/models/source.dart';
 import '../../../../data/repository/repository.dart';
@@ -11,7 +12,12 @@ part 'home_screen_state.dart';
 
 class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
   HomeScreenBloc(this.repository) : super(HomeScreenInitial()) {
-    on<FetchHomeDataEvent>(_onDataFetch);
+    on<FetchHomeDataEvent>(
+      _onDataFetch,
+      transformer: (events, mapper) => events
+          .debounceTime(const Duration(milliseconds: 1000))
+          .asyncExpand(mapper),
+    );
     // on<LoadNextEvent>(
     //   (LoadNextEvent event, Emitter<HomeScreenState> emit) async {
     //     final hotArticleResponse = await repository.homeRepo.getHotArticles();
