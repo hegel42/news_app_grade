@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import '../../../common/bloc/app_main_bloc.dart';
 import '../../../common/constants/main_constants.dart';
 import '../../../common/extensions/context_extension.dart';
-import '../../../common/widgets/native_utils/components/native_utils.dart';
 import '../../../common/widgets/native_utils/feature.dart';
 import '../../../data/provider/change_theme_provider.dart';
 import '../../../common/main_theme/color_palette.dart';
