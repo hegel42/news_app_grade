@@ -28,5 +28,8 @@
   "health": "Здоровье",
   "science": "Наука",
   "sports": "Спорт",
-  "technology": "Технологии"
+  "technology": "Технологии",
+  "defaultError": "Что-то пошло не так",
+  "getSystemDetails": "Получить подробности о системе",
+  "getBatteryLevel": "Узнать уровень заряда"
 }

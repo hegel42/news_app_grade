@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../common/extensions/context_extension.dart';
 import '../../../common/main_theme/extensions/text_theme_extension.dart';
 import '../../../common/main_theme/extensions/theme_data_extension.dart';
-import '../../../common/modals/app_snackbar.dart';
+import '../../../common/widgets/modals/app_snackbar.dart';
 import '../../../common/utils/formatter_utils.dart';
 import '../../../common/utils/launcher_utils.dart';
 import '../../../common/widgets/app_filled_button.dart';
